@@ -1,0 +1,53 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-surface-1 border-t border-surface-3 text-ink-secondary py-16">
+  <div class="container-wide">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <!-- Brand -->
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-7 h-7 rounded-md bg-accent/10 border border-accent/20 flex items-center justify-center">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <span class="text-md font-semibold text-ink-primary">SureShift</span>
+        </div>
+        <p class="text-sm text-ink-tertiary max-w-sm mb-6">
+          Production-readiness assurance for lean SaaS teams.
+          Know what's safe, what's not, and what to fix next.
+        </p>
+        <a href="#run-scan" class="btn-primary text-sm !py-2 !px-5">
+          Run Free Scan
+        </a>
+      </div>
+
+      <!-- Product -->
+      <div>
+        <h4 class="text-sm font-medium text-ink-primary uppercase tracking-widest mb-4">Product</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#how-it-works" class="text-sm text-ink-tertiary hover:text-ink-primary no-underline transition-colors">How It Works</a></li>
+          <li><a href="#what-it-checks" class="text-sm text-ink-tertiary hover:text-ink-primary no-underline transition-colors">What It Checks</a></li>
+          <li><a href="#pricing" class="text-sm text-ink-tertiary hover:text-ink-primary no-underline transition-colors">Pricing</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h4 class="text-sm font-medium text-ink-primary uppercase tracking-widest mb-4">Resources</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#faq" class="text-sm text-ink-tertiary hover:text-ink-primary no-underline transition-colors">FAQ</a></li>
+          <li><a href="#run-scan" class="text-sm text-ink-tertiary hover:text-ink-primary no-underline transition-colors">Free Scan</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-surface-3 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-2xs text-ink-tertiary">&copy; {currentYear} SureShift. All rights reserved.</p>
+      <p class="text-2xs text-ink-disabled">sureshift.ai</p>
+    </div>
+  </div>
+</footer>

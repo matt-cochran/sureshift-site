@@ -1,0 +1,482 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="SureShift — Production Readiness Assurance for Lean SaaS Teams">
+  <Header />
+
+  <main class="pt-16">
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section class="relative py-24 md:py-36 overflow-hidden">
+      <!-- Background glow -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl animate-pulse-glow"></div>
+      </div>
+
+      <div class="container-narrow relative text-center">
+        <p class="text-sm font-medium text-accent uppercase tracking-widest mb-6">Production Readiness Assurance</p>
+
+        <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+          You've shipped the product.<br/>
+          <span class="text-ink-secondary">But you don't actually know if it's safe.</span>
+        </h1>
+
+        <p class="text-md md:text-lg text-ink-secondary max-w-2xl mx-auto mb-4 leading-relaxed">
+          Not really. You have logs. Dashboards. Alerts.
+        </p>
+        <p class="text-md md:text-lg text-ink-primary max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+          If something went wrong right now&hellip; would you know <span class="text-accent">before your customer does?</span>
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-5">
+          <a href="#run-scan" class="btn-primary text-md !py-3 !px-8">
+            Run the Free Readiness Scan
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <a href="#how-it-works" class="btn-secondary text-md !py-3 !px-8">
+            See How It Works
+          </a>
+        </div>
+
+        <p class="text-xs text-ink-tertiary">
+          Read-only &middot; No agent &middot; No credit card
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         THE REAL PROBLEM
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 md:py-28 section-divide">
+      <div class="container-narrow">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">It's not a tooling problem.</h2>
+        <p class="text-md text-ink-secondary mb-4">It <em>feels</em> like one. Maybe better alerts. Cleaner dashboards. More coverage.</p>
+        <p class="text-md text-ink-secondary mb-8">But step back. The real question isn't:</p>
+
+        <blockquote class="border-l-2 border-ink-tertiary pl-5 mb-4 text-md text-ink-tertiary italic">
+          "Do we have visibility?"
+        </blockquote>
+
+        <p class="text-md text-ink-secondary mb-4">It's:</p>
+
+        <blockquote class="border-l-2 border-accent pl-5 mb-8 text-lg text-ink-primary font-medium">
+          "Can we prove this system is safe to run?"
+        </blockquote>
+
+        <p class="text-md text-ink-secondary">
+          Most teams can't. Not because they're careless.
+          <span class="text-ink-primary font-medium">Because no one owns the full picture.</span>
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         WHAT THAT LOOKS LIKE
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 md:py-28 section-divide">
+      <div class="container-narrow">
+        <h2 class="text-2xl md:text-3xl font-bold mb-10">Here's what that looks like in practice</h2>
+
+        <div class="space-y-4 mb-10">
+          {[
+            'Deploys usually work… until one doesn\'t.',
+            'Alerts exist… but not always the right ones.',
+            'Backups run… but haven\'t been tested recently.',
+            'Someone probably owns production… but it\'s fuzzy.',
+          ].map(item => (
+            <div class="flex items-start gap-3 p-4 bg-surface-1 rounded-lg border border-surface-3">
+              <span class="score-badge score-badge--warn mt-0.5">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l7.53 13H4.47L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+                drift
+              </span>
+              <p class="text-sm text-ink-secondary">{item}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-md text-ink-secondary">
+          Nothing is obviously broken.
+          <span class="text-signal-warn font-medium"> Which is exactly why it's dangerous.</span>
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         THE ANSWER
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 md:py-28 section-divide">
+      <div class="container-narrow">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">You don't need another dashboard.</h2>
+        <p class="text-lg text-ink-secondary mb-10">You need an answer. A simple one:</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          {[
+            { label: 'What\'s safe', color: 'ok' },
+            { label: 'What\'s not', color: 'err' },
+            { label: 'What needs attention now', color: 'warn' },
+          ].map(item => (
+            <div class={`p-5 rounded-lg border text-center bg-signal-${item.color}-bg border-signal-${item.color}/20`}>
+              <p class={`text-md font-medium text-signal-${item.color}`}>{item.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-sm text-ink-tertiary text-center">So you can stop guessing.</p>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         HOW IT WORKS
+    ═══════════════════════════════════════════ -->
+    <section id="how-it-works" class="py-20 md:py-28 section-divide">
+      <div class="container-narrow">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Run one command. That's it.</h2>
+        <p class="text-md text-ink-secondary mb-10">
+          Your team runs a lightweight scan. It checks your actual setup&mdash;CI/CD, cloud, monitoring, access, recovery.
+          Then it gives you one report. Not noise. Not graphs. <strong class="text-ink-primary">A baseline.</strong>
+        </p>
+
+        <div class="terminal-block mb-10">
+          <p><span class="prompt">$</span> curl -fsSL https://sureshift.ai/scan | bash</p>
+          <p class="mt-3 text-ink-tertiary">Scanning CI/CD pipelines...</p>
+          <p class="text-ink-tertiary">Checking cloud configuration...</p>
+          <p class="text-ink-tertiary">Verifying monitoring & alerts...</p>
+          <p class="text-ink-tertiary">Reviewing access & secrets...</p>
+          <p class="text-ink-tertiary">Assessing recovery readiness...</p>
+          <p class="mt-3 text-signal-ok">&#10003; Scan complete. Report ready at https://app.sureshift.ai/report/...</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         WHAT IT CHECKS
+    ═══════════════════════════════════════════ -->
+    <section id="what-it-checks" class="py-20 md:py-28 section-divide">
+      <div class="container-wide">
+        <div class="text-center mb-14">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">What you'll see</h2>
+          <p class="text-md text-ink-secondary max-w-xl mx-auto">One clear view of reality. For each issue: why it matters, how urgent it is, what to do, and who should own it.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            {
+              title: 'CI/CD Safety',
+              description: 'Rollback readiness, deploy frequency, pipeline security, branch protections.',
+              icon: '<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>',
+            },
+            {
+              title: 'Observability & Alerts',
+              description: 'Monitoring coverage, alert quality, SLO presence, on-call routing.',
+              icon: '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
+            },
+            {
+              title: 'Reliability Controls',
+              description: 'Ownership gaps, runbook coverage, incident process, service dependencies.',
+              icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+            },
+            {
+              title: 'Secrets & Access',
+              description: 'IAM hygiene, secret rotation, least-privilege checks, change audit trails.',
+              icon: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+            },
+            {
+              title: 'Cost & Sprawl',
+              description: 'Environment sprawl, unused resources, cost anomaly signals, right-sizing.',
+              icon: '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+            },
+            {
+              title: 'Backup & Recovery',
+              description: 'Backup freshness, restore testing evidence, disaster recovery posture.',
+              icon: '<polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>',
+            },
+          ].map(item => (
+            <div class="p-6 bg-surface-1 rounded-xl border border-surface-3 hover:border-accent/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+                  <Fragment set:html={item.icon} />
+                </svg>
+              </div>
+              <h3 class="text-md font-semibold text-ink-primary mb-2">{item.title}</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         SAFETY / TRUST
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 md:py-28 section-divide">
+      <div class="container-narrow">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Before you ask&mdash;</h2>
+        <p class="text-lg text-ink-secondary mb-10">Yes, it's safe to run.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[
+            { label: 'What it checks', detail: 'Transparent methodology. See every check before you run it.' },
+            { label: 'What permissions it needs', detail: 'Minimal, read-only access. No write operations, ever.' },
+            { label: 'What it never touches', detail: 'No secrets collected. No configuration changes. No agents installed.' },
+            { label: 'You\'re in control', detail: 'Run it once. Or never again. Cancel anytime, keep your data.' },
+          ].map(item => (
+            <div class="p-5 bg-surface-1 rounded-lg border border-surface-3">
+              <div class="flex items-center gap-2 mb-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-signal-ok">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <h3 class="text-sm font-semibold text-ink-primary">{item.label}</h3>
+              </div>
+              <p class="text-sm text-ink-tertiary leading-relaxed">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         URGENCY / WHY NOW
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 md:py-28 section-divide">
+      <div class="container-narrow">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Most teams don't do this until they have to.</h2>
+        <p class="text-md text-ink-secondary mb-10">That moment usually looks like:</p>
+
+        <div class="space-y-3 mb-10">
+          {[
+            'A customer finds the issue first.',
+            'A deal stalls on technical questions.',
+            'A deploy goes sideways.',
+            'A bill spikes unexpectedly.',
+            'A key engineer leaves.',
+          ].map(item => (
+            <div class="flex items-center gap-3 px-5 py-3 bg-signal-err-bg/50 rounded-lg border border-signal-err/10">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="text-signal-err shrink-0">
+                <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+              </svg>
+              <p class="text-sm text-ink-secondary">{item}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-md text-ink-secondary">
+          Then suddenly&mdash; <em>"We should probably tighten this up."</em>
+        </p>
+        <p class="text-md text-ink-primary font-medium mt-4">
+          This just lets you answer that earlier. Privately. Without pressure.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         PRICING
+    ═══════════════════════════════════════════ -->
+    <section id="pricing" class="py-20 md:py-28 section-divide">
+      <div class="container-wide">
+        <div class="text-center mb-14">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">Start with the smallest possible step</h2>
+          <p class="text-md text-ink-secondary max-w-xl mx-auto">Run the scan. Get the report. Decide from there.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+          <!-- Free -->
+          <div class="p-8 bg-surface-1 rounded-xl border border-surface-3 flex flex-col">
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold text-ink-primary mb-1">Free Readiness Scan</h3>
+              <p class="text-sm text-ink-tertiary">See where you stand.</p>
+            </div>
+            <p class="text-3xl font-bold text-ink-primary mb-6">$0</p>
+            <ul class="space-y-3 mb-8 flex-1">
+              {[
+                'One product or service',
+                'One clear baseline report',
+                'Top risks highlighted',
+                'Monthly re-run if you want',
+                'Shareable executive summary',
+              ].map(item => (
+                <li class="flex items-start gap-2.5 text-sm text-ink-secondary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent mt-0.5 shrink-0">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="#run-scan" class="btn-secondary w-full text-center">Run Free Scan</a>
+          </div>
+
+          <!-- Pro — highlighted -->
+          <div class="p-8 bg-surface-1 rounded-xl border-2 border-accent/40 flex flex-col relative">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="score-badge score-badge--ok">Recommended</span>
+            </div>
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold text-ink-primary mb-1">Pro Portal</h3>
+              <p class="text-sm text-ink-tertiary">Keep a continuous eye on drift.</p>
+            </div>
+            <p class="text-3xl font-bold text-ink-primary mb-1">$499<span class="text-lg font-normal text-ink-tertiary">/mo</span></p>
+            <p class="text-xs text-ink-tertiary mb-6">Per workload bundle</p>
+            <ul class="space-y-3 mb-8 flex-1">
+              {[
+                'Scheduled automated scans',
+                'Trend history & score diffs',
+                'Team seats & collaboration',
+                'Slack & email alerts',
+                'Policy thresholds & exports',
+                'Multiple repos & services',
+              ].map(item => (
+                <li class="flex items-start gap-2.5 text-sm text-ink-secondary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent mt-0.5 shrink-0">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="#run-scan" class="btn-primary w-full text-center">Start with Pro</a>
+          </div>
+
+          <!-- Fractional -->
+          <div class="p-8 bg-surface-1 rounded-xl border border-surface-3 flex flex-col">
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold text-ink-primary mb-1">Fractional DevOps Assurance</h3>
+              <p class="text-sm text-ink-tertiary">Expert partner to keep it green.</p>
+            </div>
+            <p class="text-3xl font-bold text-ink-primary mb-1">$3k<span class="text-lg font-normal text-ink-tertiary">/mo</span></p>
+            <p class="text-xs text-ink-tertiary mb-6">Includes Pro portal</p>
+            <ul class="space-y-3 mb-8 flex-1">
+              {[
+                'Everything in Pro',
+                'Monthly expert review',
+                'Prioritized remediation plan',
+                'Architecture guidance',
+                'Incident readiness drills',
+                'Executive QBR & proof-of-fix',
+              ].map(item => (
+                <li class="flex items-start gap-2.5 text-sm text-ink-secondary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent mt-0.5 shrink-0">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a href="#run-scan" class="btn-secondary w-full text-center">Talk to Us</a>
+          </div>
+
+        </div>
+
+        <p class="text-center text-sm text-ink-tertiary mt-8">Nothing to commit to. No hiring. No overhead. No guesswork.</p>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         FAQ
+    ═══════════════════════════════════════════ -->
+    <section id="faq" class="py-20 md:py-28 section-divide">
+      <div class="container-narrow">
+        <h2 class="text-2xl md:text-3xl font-bold mb-10">A few things you might be thinking</h2>
+
+        <div class="space-y-4">
+          {[
+            {
+              q: '"We already have monitoring."',
+              a: 'You do. This tells you if it\'s actually enough. We don\'t replace your stack\u2014we turn existing signals into a readiness score, executive report, and remediation workflow.',
+            },
+            {
+              q: '"We might be too early."',
+              a: 'Then the report will say so. That\'s still useful. Stay on the free plan until the moment when "we should tighten this up" becomes "someone expects evidence."',
+            },
+            {
+              q: '"We don\'t want another tool."',
+              a: 'Good. This isn\'t something you maintain. It\'s something you check. No agents, no dashboards to stare at, no new workflow to learn.',
+            },
+            {
+              q: '"We\'ll hire later."',
+              a: 'That makes sense. This buys you time and lowers risk until that hire is justified. Easy to cancel, easy to hand off.',
+            },
+            {
+              q: '"What about our existing Datadog / Grafana setup?"',
+              a: 'Great\u2014we use your existing tooling as evidence, not as something to rip out. Your tools tell you a lot. They don\'t usually tell leadership whether the whole picture is trending safer or riskier.',
+            },
+            {
+              q: '"Do I need to install an agent?"',
+              a: 'No. The scan is read-only and can run via CLI or in CI/CD. No agents, no secrets collected, no configuration changes.',
+            },
+          ].map(item => (
+            <details class="group p-5 bg-surface-1 rounded-lg border border-surface-3 hover:border-accent/20 transition-colors cursor-pointer">
+              <summary class="flex items-center justify-between text-md font-medium text-ink-primary list-none">
+                {item.q}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ink-tertiary shrink-0 transition-transform group-open:rotate-45">
+                  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </summary>
+              <p class="mt-3 text-sm text-ink-secondary leading-relaxed">{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         BOTTOM CTA
+    ═══════════════════════════════════════════ -->
+    <section id="run-scan" class="py-24 md:py-32 section-divide">
+      <div class="container-narrow text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">You don't need to buy anything.</h2>
+        <p class="text-md text-ink-secondary mb-2">You don't need to talk to anyone.</p>
+        <p class="text-md text-ink-secondary mb-8">You just need to answer one question:</p>
+
+        <p class="text-xl md:text-2xl font-bold text-ink-primary mb-10">
+          Are we actually safe&hellip;<br/>
+          <span class="text-accent">or just hoping we are?</span>
+        </p>
+
+        <div class="max-w-md mx-auto p-8 bg-surface-1 rounded-xl border border-surface-3">
+          <h3 class="text-md font-semibold text-ink-primary mb-4">Run your free readiness scan</h3>
+          <form class="space-y-4" action="#" method="POST">
+            <div>
+              <label for="email" class="sr-only">Work email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@company.com"
+                required
+                class="w-full px-4 py-3 bg-surface-0 border border-surface-3 rounded-lg text-sm text-ink-primary placeholder-ink-disabled focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+              />
+            </div>
+            <button type="submit" class="btn-primary w-full !py-3 text-md">
+              Send Install Command
+            </button>
+          </form>
+          <p class="text-xs text-ink-tertiary mt-4">
+            Read-only &middot; No agent &middot; No credit card &middot; Works monthly or in CI/CD
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
