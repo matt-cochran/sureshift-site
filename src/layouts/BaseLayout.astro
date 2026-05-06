@@ -10,7 +10,7 @@ interface Props {
 const {
   title,
   description = 'Production-readiness assurance for lean SaaS teams. Free CLI scan, executive reporting, and fractional DevOps support.',
-  image = '/og-image.png',
+  image = '/og-image.png',  // PNG is preferred for OG tags; SVG fallback at /og-image.svg
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);

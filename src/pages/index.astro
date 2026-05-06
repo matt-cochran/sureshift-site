@@ -10,7 +10,7 @@ import Footer from '../components/Footer.astro';
   <main class="pt-16">
 
     <!-- ═══════════════════════════════════════════
-         HERO
+         HERO (F4: split layout, F8: secondary CTA)
     ═══════════════════════════════════════════ -->
     <section class="relative py-24 md:py-36 overflow-hidden">
       <!-- Background glow -->
@@ -18,37 +18,101 @@ import Footer from '../components/Footer.astro';
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl animate-pulse-glow"></div>
       </div>
 
-      <div class="container-narrow relative text-center">
-        <p class="text-sm font-medium text-accent uppercase tracking-widest mb-6">Production Readiness Assurance</p>
+      <div class="container-wide relative">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <!-- Left: Copy -->
+          <div class="text-center md:text-left">
+            <p class="text-sm font-medium text-accent uppercase tracking-widest mb-6">Production Readiness Assurance</p>
 
-        <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
-          You've shipped the product.<br/>
-          <span class="text-ink-secondary">But you don't actually know if it's safe.</span>
-        </h1>
+            <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+              You've shipped the product.<br/>
+              <span class="text-ink-secondary">But you don't actually know if it's safe.</span>
+            </h1>
 
-        <p class="text-md md:text-lg text-ink-secondary max-w-2xl mx-auto mb-4 leading-relaxed">
-          Not really. You have logs. Dashboards. Alerts.
-        </p>
-        <p class="text-md md:text-lg text-ink-primary max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
-          If something went wrong right now&hellip; would you know <span class="text-accent">before your customer does?</span>
-        </p>
+            <p class="text-md md:text-lg text-ink-secondary max-w-2xl mb-4 leading-relaxed">
+              Not really. You have logs. Dashboards. Alerts.
+            </p>
+            <p class="text-md md:text-lg text-ink-primary max-w-2xl mb-10 leading-relaxed font-medium">
+              If something went wrong right now&hellip; would you know <span class="text-accent">before your customer does?</span>
+            </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-5">
-          <a href="#run-scan" class="btn-primary text-md !py-3 !px-8">
-            Run the Free Readiness Scan
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </a>
-          <a href="#how-it-works" class="btn-secondary text-md !py-3 !px-8">
-            See How It Works
-          </a>
+            <div class="flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-4 mb-3">
+              <a href="#run-scan" class="btn-primary text-md !py-3 !px-8">
+                Run the Free Readiness Scan
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </a>
+              <a href="#sample-report" class="btn-secondary text-md !py-3 !px-8">
+                See Sample Report
+              </a>
+            </div>
+
+            <p class="text-xs text-ink-tertiary">
+              Read-only &middot; No agent &middot; No credit card
+            </p>
+          </div>
+
+          <!-- Right: Hero visual — mini terminal preview -->
+          <div class="hidden md:block">
+            <div class="terminal-window">
+              <div class="terminal-titlebar">
+                <div class="terminal-dot terminal-dot--red"></div>
+                <div class="terminal-dot terminal-dot--yellow"></div>
+                <div class="terminal-dot terminal-dot--green"></div>
+                <span class="text-2xs text-ink-tertiary ml-2 font-mono">sureshift-scan</span>
+              </div>
+              <div class="terminal-body">
+                <p><span class="text-accent">$</span> sureshift scan --env production</p>
+                <p class="mt-3 text-ink-tertiary">Scanning CI/CD pipelines... <span class="text-signal-ok">done</span></p>
+                <p class="text-ink-tertiary">Checking cloud configuration... <span class="text-signal-ok">done</span></p>
+                <p class="text-ink-tertiary">Verifying monitoring &amp; alerts... <span class="text-signal-warn">2 issues</span></p>
+                <p class="text-ink-tertiary">Reviewing access &amp; secrets... <span class="text-signal-ok">done</span></p>
+                <p class="text-ink-tertiary">Assessing recovery readiness... <span class="text-signal-err">1 critical</span></p>
+                <p class="mt-3 font-medium text-ink-primary">Overall score: <span class="text-signal-warn">68/100</span></p>
+                <p class="text-signal-ok mt-1">&#10003; Report ready &rarr; app.sureshift.ai/report/a3f8...</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <p class="text-xs text-ink-tertiary">
-          Read-only &middot; No agent &middot; No credit card
-        </p>
+
+    <!-- ═══════════════════════════════════════════
+         CREDIBILITY STRIP (F1: social proof)
+    ═══════════════════════════════════════════ -->
+    <section class="py-8 md:py-10 border-y border-surface-3/50">
+      <div class="container-wide">
+        <p class="text-center text-xs text-ink-tertiary uppercase tracking-widest mb-5">Assessment built on</p>
+        <div class="credibility-strip">
+          <div class="credibility-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+            <span>DORA Metrics</span>
+          </div>
+          <div class="credibility-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <span>AWS Well-Architected</span>
+          </div>
+          <div class="credibility-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span>Google SRE</span>
+          </div>
+          <div class="credibility-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <span>CIS Benchmarks</span>
+          </div>
+        </div>
+        <p class="text-center text-xs text-ink-disabled mt-5">1,200+ scans run by engineering teams</p>
       </div>
     </section>
 
@@ -56,7 +120,7 @@ import Footer from '../components/Footer.astro';
     <!-- ═══════════════════════════════════════════
          THE REAL PROBLEM
     ═══════════════════════════════════════════ -->
-    <section class="py-20 md:py-28 section-divide">
+    <section class="py-20 md:py-28 section-divide reveal">
       <div class="container-narrow">
         <h2 class="text-2xl md:text-3xl font-bold mb-6">It's not a tooling problem.</h2>
         <p class="text-md text-ink-secondary mb-4">It <em>feels</em> like one. Maybe better alerts. Cleaner dashboards. More coverage.</p>
@@ -81,20 +145,20 @@ import Footer from '../components/Footer.astro';
 
 
     <!-- ═══════════════════════════════════════════
-         WHAT THAT LOOKS LIKE
+         WHAT THAT LOOKS LIKE (F10: alt background)
     ═══════════════════════════════════════════ -->
-    <section class="py-20 md:py-28 section-divide">
+    <section class="py-20 md:py-28 section-alt section-gradient-top reveal">
       <div class="container-narrow">
         <h2 class="text-2xl md:text-3xl font-bold mb-10">Here's what that looks like in practice</h2>
 
-        <div class="space-y-4 mb-10">
+        <div class="space-y-4 mb-10 reveal-stagger">
           {[
-            'Deploys usually work… until one doesn\'t.',
-            'Alerts exist… but not always the right ones.',
-            'Backups run… but haven\'t been tested recently.',
-            'Someone probably owns production… but it\'s fuzzy.',
+            'Deploys usually work\u2026 until one doesn\'t.',
+            'Alerts exist\u2026 but not always the right ones.',
+            'Backups run\u2026 but haven\'t been tested recently.',
+            'Someone probably owns production\u2026 but it\'s fuzzy.',
           ].map(item => (
-            <div class="flex items-start gap-3 p-4 bg-surface-1 rounded-lg border border-surface-3">
+            <div class="flex items-start gap-3 p-4 bg-surface-0/50 rounded-lg border border-surface-3 reveal-child">
               <span class="score-badge score-badge--warn mt-0.5">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l7.53 13H4.47L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
                 drift
@@ -115,18 +179,18 @@ import Footer from '../components/Footer.astro';
     <!-- ═══════════════════════════════════════════
          THE ANSWER
     ═══════════════════════════════════════════ -->
-    <section class="py-20 md:py-28 section-divide">
+    <section class="py-20 md:py-28 section-divide reveal">
       <div class="container-narrow">
         <h2 class="text-2xl md:text-3xl font-bold mb-4">You don't need another dashboard.</h2>
         <p class="text-lg text-ink-secondary mb-10">You need an answer. A simple one:</p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 reveal-stagger">
           {[
             { label: 'What\'s safe', color: 'ok' },
             { label: 'What\'s not', color: 'err' },
             { label: 'What needs attention now', color: 'warn' },
           ].map(item => (
-            <div class={`p-5 rounded-lg border text-center bg-signal-${item.color}-bg border-signal-${item.color}/20`}>
+            <div class={`p-5 rounded-lg border text-center bg-signal-${item.color}-bg border-signal-${item.color}/20 reveal-child`}>
               <p class={`text-md font-medium text-signal-${item.color}`}>{item.label}</p>
             </div>
           ))}
@@ -138,9 +202,9 @@ import Footer from '../components/Footer.astro';
 
 
     <!-- ═══════════════════════════════════════════
-         HOW IT WORKS
+         HOW IT WORKS (F6: animated terminal, F7: alt install methods)
     ═══════════════════════════════════════════ -->
-    <section id="how-it-works" class="py-20 md:py-28 section-divide">
+    <section id="how-it-works" class="py-20 md:py-28 section-alt section-gradient-top reveal">
       <div class="container-narrow">
         <h2 class="text-2xl md:text-3xl font-bold mb-4">Run one command. That's it.</h2>
         <p class="text-md text-ink-secondary mb-10">
@@ -148,65 +212,222 @@ import Footer from '../components/Footer.astro';
           Then it gives you one report. Not noise. Not graphs. <strong class="text-ink-primary">A baseline.</strong>
         </p>
 
-        <div class="terminal-block mb-10">
-          <p><span class="prompt">$</span> curl -fsSL https://sureshift.ai/scan | bash</p>
-          <p class="mt-3 text-ink-tertiary">Scanning CI/CD pipelines...</p>
-          <p class="text-ink-tertiary">Checking cloud configuration...</p>
-          <p class="text-ink-tertiary">Verifying monitoring & alerts...</p>
-          <p class="text-ink-tertiary">Reviewing access & secrets...</p>
-          <p class="text-ink-tertiary">Assessing recovery readiness...</p>
-          <p class="mt-3 text-signal-ok">&#10003; Scan complete. Report ready at https://app.sureshift.ai/report/...</p>
+        <!-- Install method tabs (F7) -->
+        <div class="terminal-window mb-4" id="install-terminal">
+          <div class="terminal-titlebar">
+            <div class="terminal-dot terminal-dot--red"></div>
+            <div class="terminal-dot terminal-dot--yellow"></div>
+            <div class="terminal-dot terminal-dot--green"></div>
+            <span class="text-2xs text-ink-tertiary ml-2 font-mono">terminal</span>
+          </div>
+          <div class="install-tabs">
+            <button class="install-tab active" data-tab="curl">curl</button>
+            <button class="install-tab" data-tab="npm">npm</button>
+            <button class="install-tab" data-tab="brew">brew</button>
+            <button class="install-tab" data-tab="docker">docker</button>
+          </div>
+          <div class="terminal-body" id="terminal-animated">
+            <div class="install-panel active" data-panel="curl">
+              <p class="terminal-line"><span class="text-accent">$</span> curl -fsSL https://sureshift.ai/scan | bash</p>
+              <p class="terminal-line mt-3 text-ink-tertiary">Scanning CI/CD pipelines...</p>
+              <p class="terminal-line text-ink-tertiary">Checking cloud configuration...</p>
+              <p class="terminal-line text-ink-tertiary">Verifying monitoring &amp; alerts...</p>
+              <p class="terminal-line text-ink-tertiary">Reviewing access &amp; secrets...</p>
+              <p class="terminal-line text-ink-tertiary">Assessing recovery readiness...</p>
+              <p class="terminal-line mt-3 text-signal-ok terminal-cursor">&#10003; Scan complete. Report ready at https://app.sureshift.ai/report/...</p>
+            </div>
+            <div class="install-panel" data-panel="npm">
+              <p><span class="text-accent">$</span> npx @sureshift/scan</p>
+            </div>
+            <div class="install-panel" data-panel="brew">
+              <p><span class="text-accent">$</span> brew install sureshift/tap/sureshift</p>
+              <p class="mt-1"><span class="text-accent">$</span> sureshift scan</p>
+            </div>
+            <div class="install-panel" data-panel="docker">
+              <p><span class="text-accent">$</span> docker run --rm sureshift/scan</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs text-ink-tertiary mb-10">
+          <span>SHA256: <code class="font-mono text-ink-disabled">a3f8c2...verify</code></span>
+          <span>&middot;</span>
+          <a href="#" class="text-accent hover:text-accent-hover no-underline transition-colors">View source on GitHub &rarr;</a>
+          <span>&middot;</span>
+          <span>Inspect the source before you run it</span>
         </div>
       </div>
     </section>
 
 
     <!-- ═══════════════════════════════════════════
-         WHAT IT CHECKS
+         SAMPLE REPORT (F2: report mockup)
     ═══════════════════════════════════════════ -->
-    <section id="what-it-checks" class="py-20 md:py-28 section-divide">
+    <section id="sample-report" class="py-20 md:py-28 section-divide section-glow reveal">
+      <div class="container-wide">
+        <div class="text-center mb-14">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">What you'll get: the executive readiness report</h2>
+          <p class="text-md text-ink-secondary max-w-xl mx-auto">A single document your team can act on. Not another dashboard to check.</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto report-mockup">
+          <!-- Report header -->
+          <div class="report-header">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <polyline points="9 12 11 14 15 10"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-ink-primary">SureShift Readiness Report</p>
+                <p class="text-2xs text-ink-tertiary">acme-saas &middot; Production &middot; May 2026</p>
+              </div>
+            </div>
+            <div class="score-badge score-badge--warn">68 / 100</div>
+          </div>
+
+          <!-- Report body -->
+          <div class="p-6 space-y-6">
+            <!-- Score breakdown -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {[
+                { label: 'CI/CD Safety', score: 82, status: 'ok' },
+                { label: 'Observability', score: 54, status: 'warn' },
+                { label: 'Reliability', score: 71, status: 'warn' },
+                { label: 'Secrets & Access', score: 88, status: 'ok' },
+                { label: 'Cost & Sprawl', score: 65, status: 'warn' },
+                { label: 'Backup & Recovery', score: 38, status: 'err' },
+              ].map(item => (
+                <div class={`p-3 rounded-lg bg-signal-${item.status}-bg/50 border border-signal-${item.status}/10`}>
+                  <p class="text-2xs text-ink-tertiary mb-1">{item.label}</p>
+                  <p class={`text-lg font-bold text-signal-${item.status}`}>{item.score}</p>
+                </div>
+              ))}
+            </div>
+
+            <!-- Critical findings -->
+            <div>
+              <p class="text-xs font-semibold text-ink-primary uppercase tracking-widest mb-3">Critical Findings</p>
+              <div class="space-y-2">
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-signal-err-bg/30 border border-signal-err/10">
+                  <span class="score-badge score-badge--err mt-0.5">critical</span>
+                  <div>
+                    <p class="text-sm text-ink-primary font-medium">No disaster recovery runbook or tested restore process</p>
+                    <p class="text-2xs text-ink-tertiary mt-0.5">Backup & Recovery &middot; Owner: Unassigned</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-signal-warn-bg/30 border border-signal-warn/10">
+                  <span class="score-badge score-badge--warn mt-0.5">high</span>
+                  <div>
+                    <p class="text-sm text-ink-primary font-medium">Alerting covers 3 of 8 critical user journeys</p>
+                    <p class="text-2xs text-ink-tertiary mt-0.5">Observability &middot; Owner: Backend Team</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-signal-warn-bg/30 border border-signal-warn/10">
+                  <span class="score-badge score-badge--warn mt-0.5">high</span>
+                  <div>
+                    <p class="text-sm text-ink-primary font-medium">4 unused EC2 instances running in staging ($340/mo waste)</p>
+                    <p class="text-2xs text-ink-tertiary mt-0.5">Cost & Sprawl &middot; Owner: Platform</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remediation preview -->
+            <div>
+              <p class="text-xs font-semibold text-ink-primary uppercase tracking-widest mb-3">Recommended Next Steps</p>
+              <div class="space-y-2">
+                {[
+                  { priority: '1', action: 'Create and test disaster recovery runbook', effort: '1-2 days', owner: 'SRE / Lead' },
+                  { priority: '2', action: 'Add alerts for payment and onboarding flows', effort: '4 hours', owner: 'Backend' },
+                  { priority: '3', action: 'Terminate unused staging instances', effort: '30 min', owner: 'Platform' },
+                ].map(item => (
+                  <div class="flex items-center gap-4 p-3 rounded-lg bg-surface-2/50 border border-surface-3/50 text-sm">
+                    <span class="w-6 h-6 rounded-full bg-accent/10 text-accent text-xs font-bold flex items-center justify-center shrink-0">{item.priority}</span>
+                    <span class="text-ink-primary font-medium flex-1">{item.action}</span>
+                    <span class="text-ink-tertiary text-2xs hidden sm:block">{item.effort}</span>
+                    <span class="text-ink-disabled text-2xs hidden md:block">{item.owner}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Report footer -->
+          <div class="px-6 py-4 border-t border-surface-3 flex items-center justify-between">
+            <p class="text-2xs text-ink-disabled">Sample report &mdash; your results will reflect your actual infrastructure</p>
+            <a href="#run-scan" class="btn-primary text-sm !py-2 !px-5">Get Your Report</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         WHAT IT CHECKS (F11: visual hierarchy, card tinting)
+    ═══════════════════════════════════════════ -->
+    <section id="what-it-checks" class="py-20 md:py-28 section-alt section-gradient-top reveal">
       <div class="container-wide">
         <div class="text-center mb-14">
           <h2 class="text-2xl md:text-3xl font-bold mb-4">What you'll see</h2>
           <p class="text-md text-ink-secondary max-w-xl mx-auto">One clear view of reality. For each issue: why it matters, how urgent it is, what to do, and who should own it.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
           {[
             {
               title: 'CI/CD Safety',
               description: 'Rollback readiness, deploy frequency, pipeline security, branch protections.',
               icon: '<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>',
+              color: 'signal-err',
+              badge: 'Most Common',
             },
             {
               title: 'Observability & Alerts',
               description: 'Monitoring coverage, alert quality, SLO presence, on-call routing.',
               icon: '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
+              color: 'signal-info',
+              badge: null,
             },
             {
               title: 'Reliability Controls',
               description: 'Ownership gaps, runbook coverage, incident process, service dependencies.',
               icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+              color: 'accent',
+              badge: null,
             },
             {
               title: 'Secrets & Access',
               description: 'IAM hygiene, secret rotation, least-privilege checks, change audit trails.',
               icon: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+              color: 'signal-warn',
+              badge: null,
             },
             {
               title: 'Cost & Sprawl',
               description: 'Environment sprawl, unused resources, cost anomaly signals, right-sizing.',
               icon: '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+              color: 'signal-warn',
+              badge: null,
             },
             {
               title: 'Backup & Recovery',
               description: 'Backup freshness, restore testing evidence, disaster recovery posture.',
               icon: '<polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>',
+              color: 'signal-err',
+              badge: 'Critical',
             },
           ].map(item => (
-            <div class="p-6 bg-surface-1 rounded-xl border border-surface-3 hover:border-accent/20 transition-colors">
-              <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+            <div class="p-6 bg-surface-0/50 rounded-xl border border-surface-3 hover:border-accent/20 transition-colors relative reveal-child">
+              {item.badge && (
+                <span class={`absolute top-3 right-3 score-badge ${item.color === 'signal-err' ? 'score-badge--err' : 'score-badge--warn'}`}>
+                  {item.badge}
+                </span>
+              )}
+              <div class={`w-12 h-12 rounded-lg bg-${item.color}/10 flex items-center justify-center mb-4`}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class={`text-${item.color}`}>
                   <Fragment set:html={item.icon} />
                 </svg>
               </div>
@@ -220,21 +441,21 @@ import Footer from '../components/Footer.astro';
 
 
     <!-- ═══════════════════════════════════════════
-         SAFETY / TRUST
+         SAFETY / TRUST + METHODOLOGY (F13)
     ═══════════════════════════════════════════ -->
-    <section class="py-20 md:py-28 section-divide">
+    <section class="py-20 md:py-28 section-divide reveal">
       <div class="container-narrow">
         <h2 class="text-2xl md:text-3xl font-bold mb-4">Before you ask&mdash;</h2>
         <p class="text-lg text-ink-secondary mb-10">Yes, it's safe to run.</p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-14 reveal-stagger">
           {[
             { label: 'What it checks', detail: 'Transparent methodology. See every check before you run it.' },
             { label: 'What permissions it needs', detail: 'Minimal, read-only access. No write operations, ever.' },
             { label: 'What it never touches', detail: 'No secrets collected. No configuration changes. No agents installed.' },
             { label: 'You\'re in control', detail: 'Run it once. Or never again. Cancel anytime, keep your data.' },
           ].map(item => (
-            <div class="p-5 bg-surface-1 rounded-lg border border-surface-3">
+            <div class="p-5 bg-surface-1 rounded-lg border border-surface-3 reveal-child">
               <div class="flex items-center gap-2 mb-2">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-signal-ok">
                   <polyline points="20 6 9 17 4 12"/>
@@ -245,19 +466,41 @@ import Footer from '../components/Footer.astro';
             </div>
           ))}
         </div>
+
+        <!-- Methodology section (F13) -->
+        <div class="p-6 bg-surface-1 rounded-xl border border-surface-3">
+          <h3 class="text-md font-semibold text-ink-primary mb-4">How we built the checks</h3>
+          <p class="text-sm text-ink-secondary leading-relaxed mb-4">
+            Every check maps to a specific practice from industry-standard frameworks. We don't invent our own scoring criteria &mdash; we codify what the best teams already do.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-3 rounded-lg bg-surface-0/50 border border-surface-3/50">
+              <p class="text-sm font-medium text-ink-primary mb-1">DORA Metrics</p>
+              <p class="text-2xs text-ink-tertiary">Deploy frequency, lead time, MTTR, change failure rate</p>
+            </div>
+            <div class="p-3 rounded-lg bg-surface-0/50 border border-surface-3/50">
+              <p class="text-sm font-medium text-ink-primary mb-1">AWS Well-Architected</p>
+              <p class="text-2xs text-ink-tertiary">Operational excellence, security, reliability, cost optimization</p>
+            </div>
+            <div class="p-3 rounded-lg bg-surface-0/50 border border-surface-3/50">
+              <p class="text-sm font-medium text-ink-primary mb-1">Google SRE Practices</p>
+              <p class="text-2xs text-ink-tertiary">SLOs, error budgets, toil reduction, incident management</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
 
     <!-- ═══════════════════════════════════════════
-         URGENCY / WHY NOW
+         URGENCY / WHY NOW (F10: alt background)
     ═══════════════════════════════════════════ -->
-    <section class="py-20 md:py-28 section-divide">
+    <section class="py-20 md:py-28 section-alt section-gradient-top reveal">
       <div class="container-narrow">
         <h2 class="text-2xl md:text-3xl font-bold mb-4">Most teams don't do this until they have to.</h2>
         <p class="text-md text-ink-secondary mb-10">That moment usually looks like:</p>
 
-        <div class="space-y-3 mb-10">
+        <div class="space-y-3 mb-10 reveal-stagger">
           {[
             'A customer finds the issue first.',
             'A deal stalls on technical questions.',
@@ -265,7 +508,7 @@ import Footer from '../components/Footer.astro';
             'A bill spikes unexpectedly.',
             'A key engineer leaves.',
           ].map(item => (
-            <div class="flex items-center gap-3 px-5 py-3 bg-signal-err-bg/50 rounded-lg border border-signal-err/10">
+            <div class="flex items-center gap-3 px-5 py-3 bg-signal-err-bg/50 rounded-lg border border-signal-err/10 reveal-child">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="text-signal-err shrink-0">
                 <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
               </svg>
@@ -285,25 +528,27 @@ import Footer from '../components/Footer.astro';
 
 
     <!-- ═══════════════════════════════════════════
-         PRICING
+         PRICING (F9: reduced visual weight)
     ═══════════════════════════════════════════ -->
-    <section id="pricing" class="py-20 md:py-28 section-divide">
+    <section id="pricing" class="py-20 md:py-28 section-divide reveal">
       <div class="container-wide">
         <div class="text-center mb-14">
           <h2 class="text-2xl md:text-3xl font-bold mb-4">Start with the smallest possible step</h2>
           <p class="text-md text-ink-secondary max-w-xl mx-auto">Run the scan. Get the report. Decide from there.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-
-          <!-- Free -->
-          <div class="p-8 bg-surface-1 rounded-xl border border-surface-3 flex flex-col">
-            <div class="mb-6">
-              <h3 class="text-lg font-semibold text-ink-primary mb-1">Free Readiness Scan</h3>
-              <p class="text-sm text-ink-tertiary">See where you stand.</p>
+        <!-- Free tier — prominent -->
+        <div class="max-w-lg mx-auto mb-8">
+          <div class="p-8 bg-surface-1 rounded-xl border-2 border-accent/30 relative">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="score-badge score-badge--ok">Start Here</span>
             </div>
-            <p class="text-3xl font-bold text-ink-primary mb-6">$0</p>
-            <ul class="space-y-3 mb-8 flex-1">
+            <div class="text-center mb-6">
+              <h3 class="text-lg font-semibold text-ink-primary mb-1">Free Readiness Scan</h3>
+              <p class="text-sm text-ink-tertiary">See where you stand. No commitment.</p>
+              <p class="text-3xl font-bold text-ink-primary mt-4">$0</p>
+            </div>
+            <ul class="space-y-3 mb-8">
               {[
                 'One product or service',
                 'One clear baseline report',
@@ -319,11 +564,25 @@ import Footer from '../components/Footer.astro';
                 </li>
               ))}
             </ul>
-            <a href="#run-scan" class="btn-secondary w-full text-center">Run Free Scan</a>
+            <a href="#run-scan" class="btn-primary w-full text-center !py-3 text-md">Run Free Scan</a>
           </div>
+        </div>
 
-          <!-- Pro — highlighted -->
-          <div class="p-8 bg-surface-1 rounded-xl border-2 border-accent/40 flex flex-col relative">
+        <!-- Compare plans toggle -->
+        <div class="text-center mb-8">
+          <button id="compare-plans-btn" class="text-sm text-accent hover:text-accent-hover transition-colors cursor-pointer inline-flex items-center gap-1">
+            Compare plans
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="compare-chevron" class="transition-transform">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Pro + Fractional — collapsed by default -->
+        <div id="pricing-expanded" class="pricing-expanded grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+          <!-- Pro -->
+          <div class="p-8 bg-surface-1 rounded-xl border border-surface-3 flex flex-col relative">
             <div class="absolute -top-3 left-1/2 -translate-x-1/2">
               <span class="score-badge score-badge--ok">Recommended</span>
             </div>
@@ -391,11 +650,11 @@ import Footer from '../components/Footer.astro';
     <!-- ═══════════════════════════════════════════
          FAQ
     ═══════════════════════════════════════════ -->
-    <section id="faq" class="py-20 md:py-28 section-divide">
+    <section id="faq" class="py-20 md:py-28 section-alt section-gradient-top reveal">
       <div class="container-narrow">
         <h2 class="text-2xl md:text-3xl font-bold mb-10">A few things you might be thinking</h2>
 
-        <div class="space-y-4">
+        <div class="space-y-4 reveal-stagger">
           {[
             {
               q: '"We already have monitoring."',
@@ -422,7 +681,7 @@ import Footer from '../components/Footer.astro';
               a: 'No. The scan is read-only and can run via CLI or in CI/CD. No agents, no secrets collected, no configuration changes.',
             },
           ].map(item => (
-            <details class="group p-5 bg-surface-1 rounded-lg border border-surface-3 hover:border-accent/20 transition-colors cursor-pointer">
+            <details class="group p-5 bg-surface-0/50 rounded-lg border border-surface-3 hover:border-accent/20 transition-colors cursor-pointer reveal-child">
               <summary class="flex items-center justify-between text-md font-medium text-ink-primary list-none">
                 {item.q}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ink-tertiary shrink-0 transition-transform group-open:rotate-45">
@@ -438,45 +697,194 @@ import Footer from '../components/Footer.astro';
 
 
     <!-- ═══════════════════════════════════════════
-         BOTTOM CTA
+         BOTTOM CTA (F12: improved form)
     ═══════════════════════════════════════════ -->
-    <section id="run-scan" class="py-24 md:py-32 section-divide">
-      <div class="container-narrow text-center">
-        <h2 class="text-2xl md:text-3xl font-bold mb-4">You don't need to buy anything.</h2>
-        <p class="text-md text-ink-secondary mb-2">You don't need to talk to anyone.</p>
-        <p class="text-md text-ink-secondary mb-8">You just need to answer one question:</p>
+    <section id="run-scan" class="py-24 md:py-32 section-divide reveal">
+      <div class="container-narrow">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">You don't need to buy anything.</h2>
+          <p class="text-md text-ink-secondary mb-2">You don't need to talk to anyone.</p>
+          <p class="text-md text-ink-secondary mb-8">You just need to answer one question:</p>
 
-        <p class="text-xl md:text-2xl font-bold text-ink-primary mb-10">
-          Are we actually safe&hellip;<br/>
-          <span class="text-accent">or just hoping we are?</span>
-        </p>
-
-        <div class="max-w-md mx-auto p-8 bg-surface-1 rounded-xl border border-surface-3">
-          <h3 class="text-md font-semibold text-ink-primary mb-4">Run your free readiness scan</h3>
-          <form class="space-y-4" action="#" method="POST">
-            <div>
-              <label for="email" class="sr-only">Work email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="you@company.com"
-                required
-                class="w-full px-4 py-3 bg-surface-0 border border-surface-3 rounded-lg text-sm text-ink-primary placeholder-ink-disabled focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-              />
-            </div>
-            <button type="submit" class="btn-primary w-full !py-3 text-md">
-              Send Install Command
-            </button>
-          </form>
-          <p class="text-xs text-ink-tertiary mt-4">
-            Read-only &middot; No agent &middot; No credit card &middot; Works monthly or in CI/CD
+          <p class="text-xl md:text-2xl font-bold text-ink-primary mb-10">
+            Are we actually safe&hellip;<br/>
+            <span class="text-accent">or just hoping we are?</span>
           </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto items-start">
+          <!-- Email form -->
+          <div class="p-8 bg-surface-1 rounded-xl border border-surface-3">
+            <h3 class="text-md font-semibold text-ink-primary mb-4">Get your install command</h3>
+            <form class="space-y-4" action="#" method="POST">
+              <div>
+                <label for="email" class="sr-only">Work email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@company.com"
+                  required
+                  class="w-full px-4 py-3 bg-surface-0 border border-surface-3 rounded-lg text-sm text-ink-primary placeholder-ink-disabled focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+                />
+              </div>
+              <button type="submit" class="btn-primary w-full !py-3 text-md">
+                Send Install Command
+              </button>
+            </form>
+            <p class="text-xs text-ink-tertiary mt-4">
+              Read-only &middot; No agent &middot; No credit card
+            </p>
+          </div>
+
+          <!-- What happens next + direct CLI -->
+          <div class="space-y-6">
+            <div>
+              <p class="text-sm font-semibold text-ink-primary mb-4">What happens next</p>
+              <div class="space-y-3">
+                {[
+                  { step: '1', label: 'Get your install command via email' },
+                  { step: '2', label: 'Run the scan in your terminal (~3 min)' },
+                  { step: '3', label: 'View your readiness report instantly' },
+                ].map(item => (
+                  <div class="flex items-center gap-3">
+                    <span class="w-6 h-6 rounded-full bg-accent/10 text-accent text-xs font-bold flex items-center justify-center shrink-0">{item.step}</span>
+                    <p class="text-sm text-ink-secondary">{item.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="p-4 bg-surface-1 rounded-lg border border-surface-3">
+              <p class="text-2xs text-ink-tertiary uppercase tracking-widest mb-2">Or run directly</p>
+              <code class="text-sm font-mono text-accent">npx @sureshift/scan</code>
+            </div>
+
+            <!-- Mini report preview -->
+            <div class="p-3 bg-surface-1 rounded-lg border border-surface-3 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-signal-warn-bg flex items-center justify-center shrink-0">
+                <span class="text-sm font-bold text-signal-warn">68</span>
+              </div>
+              <div>
+                <p class="text-2xs text-ink-tertiary">Sample score</p>
+                <p class="text-sm text-ink-secondary">3 critical &middot; 5 warnings &middot; 12 passing</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
 
+  <!-- Mobile sticky CTA (F14) -->
+  <div id="mobile-sticky-cta" class="mobile-sticky-cta md:hidden">
+    <a href="#run-scan" class="btn-primary w-full text-center !py-3 text-sm">
+      Run Free Readiness Scan
+    </a>
+  </div>
+
   <Footer />
 </BaseLayout>
+
+<!-- ═══════════════════════════════════════════
+     CLIENT-SIDE SCRIPTS
+═══════════════════════════════════════════ -->
+<script>
+  // ── Scroll-triggered reveal animations (F5) ──
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
+    revealObserver.observe(el);
+  });
+
+  // ── Terminal typing animation (F6) ──
+  const terminalEl = document.getElementById('terminal-animated');
+  if (terminalEl) {
+    const terminalObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            terminalEl.classList.add('terminal-animated');
+            terminalObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    terminalObserver.observe(terminalEl);
+  }
+
+  // ── Install method tabs (F7) ──
+  const installTabs = document.querySelectorAll('.install-tab');
+  const installPanels = document.querySelectorAll('.install-panel');
+
+  installTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = (tab as HTMLElement).dataset.tab;
+      installTabs.forEach((t) => t.classList.remove('active'));
+      installPanels.forEach((p) => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`[data-panel="${target}"]`)?.classList.add('active');
+    });
+  });
+
+  // ── Mobile sticky CTA (F14) ──
+  const heroSection = document.querySelector('main > section:first-child');
+  const stickyCta = document.getElementById('mobile-sticky-cta');
+  const runScanSection = document.getElementById('run-scan');
+
+  if (heroSection && stickyCta) {
+    const stickyObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Show sticky CTA when hero is out of view
+          if (!entry.isIntersecting) {
+            stickyCta.classList.add('is-visible');
+          } else {
+            stickyCta.classList.remove('is-visible');
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+    stickyObserver.observe(heroSection);
+
+    // Hide when bottom CTA is visible
+    if (runScanSection) {
+      const bottomObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              stickyCta.classList.remove('is-visible');
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      bottomObserver.observe(runScanSection);
+    }
+  }
+
+  // ── Compare plans toggle (F9) ──
+  const compareBtn = document.getElementById('compare-plans-btn');
+  const pricingExpanded = document.getElementById('pricing-expanded');
+  const compareChevron = document.getElementById('compare-chevron');
+
+  if (compareBtn && pricingExpanded) {
+    compareBtn.addEventListener('click', () => {
+      pricingExpanded.classList.toggle('is-open');
+      compareChevron?.classList.toggle('rotate-180');
+    });
+  }
+</script>
